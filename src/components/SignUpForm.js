@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import { firebaseApp } from '../firebase.js';
 import { Link } from 'react-router';
+import { firebaseApp } from '../firebase.js';
 
 class SignUpForm extends Component {
-  constructor(props){
-    super(props);
-  }
 
   signUp() {
-    const { email, password, signUp } = this.props;
-    //TODO: Actions: CREATE_USER
+    const { email, password, updateAuthError } = this.props;
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
       .catch(error => {
-        this.setState({error})
+        updateAuthError(error.message);
       })
   }
 
   render() {
-    const { error } = this.props;
+    const { updateEmail, updatePassword, error } = this.props;
     return(
     <div className="container">
       <h1 className="text-center">Register Here!</h1>
@@ -30,9 +26,8 @@ class SignUpForm extends Component {
               type="email" 
               className="form-control" 
               id="exampleInputEmail1" 
-              placeholder="Email" 
-              //TODOL UPDATE_EMAIL_INPUT
-              onChange={event => this.setState({email: event.target.value})}/>
+              placeholder="Email"
+              onChange={event => updateEmail(event.target.value)}/>
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
@@ -40,15 +35,14 @@ class SignUpForm extends Component {
               type="password" 
               className="form-control" 
               id="exampleInputPassword1" 
-              placeholder="Password" 
-              //TODO: UPDATE_PASSWORD_INPUT
-              onChange={event => this.setState({password: event.target.value})}
+              placeholder="Password"
+              onChange={event => updatePassword(event.target.value)}
             />
           </div>
           <button
              className="btn btn-primary"
              type="button"
-             onClick={() => this.signIn()}
+             onClick={() => this.signUp()}
            >
             Sign In
            </button>

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import MovieItem from '../components/MovieItem.js';
 import { TMDB_BASE_URL } from '../constants.js';
 import { firebaseApp } from '../firebase.js';
 
 class Search extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	signOut() {
     	firebaseApp.auth().signOut();

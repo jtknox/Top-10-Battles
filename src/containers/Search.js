@@ -4,9 +4,8 @@ import Search from '../routes/Search.js';
 import * as Actions from '../actions/Search.js'
 
 const mapState = (state) => {
-	console.log(state);
 	return {
-		properties: state
+		properties: state.search
 	};
 }
 

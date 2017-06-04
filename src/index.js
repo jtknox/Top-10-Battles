@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { firebaseApp } from './firebase.js';
 import { Router, Route, browserHistory } from 'react-router';
@@ -12,7 +12,6 @@ import './styles/App.css'
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
     // console.log('user has signed in or up', user);
-    const { email } = user;
     browserHistory.push('/search');
   } else {
     console.log('user has signed out or still needs to sign in.')

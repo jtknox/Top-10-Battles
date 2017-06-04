@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { firebaseApp } from '../firebase.js';
 import { Link } from 'react-router';
+import { firebaseApp } from '../firebase.js';
 
 class SignInForm extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   signIn() {
-    const { email, password } = this.props;
-    console.log('sign in component');
-    this.props.signIn(email, password);
+    const { email, password, updateAuthError } = this.props;
+    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        updateAuthError(error.message);
+      })
   }
 
   render() {
