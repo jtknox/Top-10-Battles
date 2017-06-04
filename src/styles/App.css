@@ -1,0 +1,78 @@
+/* centered columns styles */
+body {
+	background-color: #416091;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.poster {
+	z-index: 1;
+	position: relative;
+}
+
+.movieItem {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+}
+
+.posterCover {
+	opacity: .0;
+	width: 100%;
+	z-index: 2;
+	position: absolute;
+	top: 0em;
+	left: 0em;
+	height: 419px;
+	color: white;
+}
+
+.posterCover hr {
+	width: 80%;
+	margin-top: 0px;
+}
+
+.posterCover h4 {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.crop:hover .posterCover {
+	background-color: black;
+	opacity: .65;
+	color: white;
+}
+
+.crop:hover img {
+	filter: blur(7px);
+}
+
+.addText {
+	margin-right: 3px;
+}
+
+/*images with the same width*/
+.crop {
+	position: relative;
+    height: 419px;
+    /*width: 400px;*/
+    overflow: hidden;
+}
+.crop img {
+    height: auto;
+    width: 100%;
+}
+
+
+
+a:hover {
+	text-decoration: none;
+}
