@@ -4,23 +4,30 @@ import { TMDB_BASE_URL } from '../constants.js';
 import { firebaseApp } from '../firebase.js';
 
 class Search extends Component {
+	constructor(props) {
+		super(props);
+		this.state={
+			query: ''
+		}
+	}
 
 	signOut() {
     	firebaseApp.auth().signOut();
+    	//TODO: create an action that will clear the email and password
+    	//stored in the global state
   	}
 
 	loadMovie() {
-		const { query } = this.props.properties;
 		const { loadMovies } = this.props.actions;
-		const url = `${TMDB_BASE_URL}${query}`;
+		const url = `${TMDB_BASE_URL}${this.state.query}`;
 		loadMovies(url);
 	}
 
 	render() {
-		const { clicked, movies } = this.props.properties;
-		const { updateQuery } = this.props.actions;
+		const { queriedMovies } = this.props.properties;
+		console.log(queriedMovies);
 		var MovieList;
-		clicked ? MovieList = movies.map(movie => <MovieItem title={movie.title} poster={movie.poster_path} releaseDate={movie.release_date}/>) : MovieList=<div></div>;
+		queriedMovies ? MovieList = queriedMovies.map(movie => <MovieItem title={movie.title} poster={movie.poster_path} releaseDate={movie.release_date}/>) : MovieList=<div></div>;
 		return (
 		<div>
 			<div>This is the search page</div>
@@ -29,7 +36,7 @@ class Search extends Component {
 				type="text" 
 				placeholder="Enter Movie Here..."
 				//updateQueryInput
-				onChange={event => updateQuery(event.target.value)} 
+				onChange={event => this.setState({ query: event.target.value })} 
 			/>
 			<button className="btn" onClick={() => this.loadMovie()}>Search</button>
 			{MovieList}

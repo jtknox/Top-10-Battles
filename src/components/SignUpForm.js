@@ -3,17 +3,26 @@ import { Link } from 'react-router';
 import { firebaseApp } from '../firebase.js';
 
 class SignUpForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      password: '',
+      email: '',
+      errorMessage: ''
+    }
+  }
 
   signUp() {
-    const { email, password, updateAuthError } = this.props;
+    const { updateUserAuthInfo } = this.props;
+    const { email, password } = this.state;
+    updateUserAuthInfo(email, password);
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
       .catch(error => {
-        updateAuthError(error.message);
+        this.setState({ errorMessage: error.message })
       })
   }
 
   render() {
-    const { updateEmail, updatePassword, error } = this.props;
     return(
     <div className="container">
       <h1 className="text-center">Register Here!</h1>
@@ -27,7 +36,7 @@ class SignUpForm extends Component {
               className="form-control" 
               id="exampleInputEmail1" 
               placeholder="Email"
-              onChange={event => updateEmail(event.target.value)}/>
+              onChange={event => this.setState({ email: event.target.value})}/>
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
@@ -36,7 +45,7 @@ class SignUpForm extends Component {
               className="form-control" 
               id="exampleInputPassword1" 
               placeholder="Password"
-              onChange={event => updatePassword(event.target.value)}
+              onChange={event => this.setState({ password: event.target.value })}
             />
           </div>
           <button
@@ -46,7 +55,7 @@ class SignUpForm extends Component {
            >
             Sign In
            </button>
-          <div>{error}</div>
+          <div>{this.state.errorMessage}</div>
           <div><Link to={'/signin'}>Already a user? Sign in here!</Link></div>
         </form>
       </div>

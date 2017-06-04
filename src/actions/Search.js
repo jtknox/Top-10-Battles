@@ -7,10 +7,3 @@ export const loadMovies = (url) => {
         payload: axios.get(url)
     };
 }
-
-export const updateQuery = (value) => {
-    return {
-        type: Constants.UPDATE_QUERY,
-        value
-    };
-}

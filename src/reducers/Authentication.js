@@ -1,23 +1,17 @@
 import * as Constants from '../constants.js'
+import { firebaseApp } from '../firebase.js';
 
 const initalState = {
   email: '',
-  password: '',
-  error: ''
+  password: ''
 };
 
 // REDCUER
 function authenticationReducer(state = initalState, action) {
   switch (action.type) {
 
-    case Constants.UPDATE_EMAIL_INPUT:
-      return { ...state,  email: action.value };
-
-    case Constants.UPDATE_PASSWORD_INPUT:
-      return { ...state, password: action.value };
-
-    case Constants.UPDATE_AUTH_ERROR:
-      return { ...state, error: action.error };
+    case Constants.AUTHENTICATE:
+      return { ...state,  email: action.email, password: action.password };
 
     default:
       return state;
