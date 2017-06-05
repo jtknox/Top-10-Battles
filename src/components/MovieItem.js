@@ -10,10 +10,14 @@ const MovieItem = (props) => {
   		<div className="col-xs-12 col-sm-6 col-md-3">
     		<div className="thumbnail movieItem">
           <div className='crop'>
-      			<img src={poster_url} alt="..." className="poster"/>
+      			<img src={poster_url} alt='http://suggestmovie.net/images/posternotfound.png' className="poster"/>
             <div className="posterCover">
-              <h4>{props.title}</h4>
-              <hr/>
+              <div className = "movieText">
+                <h3>{props.title}</h3>
+                <hr/>
+                <h5>{props.overview}</h5>
+                <button onClick={() => props.addMovie(props.title, poster_url, props.overview, props.releaseDate)} className="btn addButton">Add</button>
+              </div>
             </div>
           </div>
     		</div>

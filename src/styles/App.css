@@ -24,6 +24,12 @@ body {
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
 }
 
+.movieText {
+	text-align: center;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
 .posterCover {
 	opacity: .0;
 	width: 100%;
@@ -69,6 +75,10 @@ body {
 .crop img {
     height: auto;
     width: 100%;
+}
+
+.addButton {
+	
 }
 
 

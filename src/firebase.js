@@ -10,3 +10,4 @@ var config = {
 };
 
 export const firebaseApp = firebase.initializeApp(config);
+export const top10MovieRef = firebase.database().ref('top10Movies');
