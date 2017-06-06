@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieItem from '../components/MovieItem.js';
 import { TMDB_BASE_URL } from '../constants.js';
+import { Link } from 'react-router';
 import { firebaseApp, top10MovieRef } from '../firebase.js';
 
 class Search extends Component {
@@ -35,6 +36,7 @@ class Search extends Component {
 		queriedMovies ? MovieList = queriedMovies.map(movie => <MovieItem title={movie.title} overview={movie.overview} poster={movie.poster_path} releaseDate={movie.release_date} addMovie={this.addMovie}/>) : MovieList=<div></div>;
 		return (
 		<div>
+			<Link to='userPage'>user page</Link>
 			<div>This is the search page</div>
 			<button onClick={() => this.signOut()}>Log Out</button>
 			<input 

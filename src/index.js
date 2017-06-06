@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import SignIn from './containers/SignIn.js';
 import SignUp from './containers/SignUp.js';
 import Search from './containers/Search.js';
+import UserPage from './containers/UserPage.js';
 import GlobalStore from './store.js';
 import './styles/App.css'
 
@@ -25,6 +26,7 @@ ReactDOM.render(
     	 <Route path="/signin" component={SignIn} />
     	 <Route path="/signup" component={SignUp} />
        <Route path="/search" component={Search} />
+       <Route path="/userPage" component={UserPage} />
     </Router>
   </Provider>, document.getElementById('root')
 )
