@@ -5,7 +5,7 @@ import * as Actions from '../actions/Search.js'
 
 const mapStateToProps = (state) => {
 	return {
-		properties: state.search
+		properties: state
 	};
 }
 

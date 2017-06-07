@@ -16,7 +16,7 @@ class SignInForm extends Component {
     const { updateUserAuthInfo } = this.props;
     const { email, password } = this.state;
     updateUserAuthInfo(email, password)
-    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    const user = firebaseApp.auth().signInWithEmailAndPassword(email, password)
       .catch(error => {
         this.setState({ errorMessage: error.message });
       })

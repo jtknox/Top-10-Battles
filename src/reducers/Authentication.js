@@ -3,7 +3,8 @@ import { firebaseApp } from '../firebase.js';
 
 const initalState = {
   email: '',
-  password: ''
+  password: '',
+  userID: ''
 };
 
 // REDCUER
@@ -12,6 +13,9 @@ function authenticationReducer(state = initalState, action) {
 
     case Constants.AUTHENTICATE:
       return { ...state,  email: action.email, password: action.password };
+
+     case Constants.UPDATE_USER_ID:
+     	return { ...state, userID: action.userID };
 
     default:
       return state;

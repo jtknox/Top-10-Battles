@@ -1,4 +1,6 @@
 import * as firebase from 'firebase';
+import { updateUserID, logout } from './actions/Authentication.js';
+import store from './store.js';
 
 var config = {
     apiKey: "AIzaSyCMfTi0vHH-O-cbd-ZfucIdBQ7torp9aHU",
@@ -11,3 +13,14 @@ var config = {
 
 export const firebaseApp = firebase.initializeApp(config);
 export const top10MovieRef = firebase.database().ref('top10Movies');
+
+firebase.auth().onAuthStateChanged((user) => {
+	if(user) {
+		console.log('signing in');
+  		store.dispatch(updateUserID(user.uid));
+	}
+	else {
+		console.log('singing out');
+		store.dispatch(logout());
+	}
+});

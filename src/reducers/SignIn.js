@@ -12,7 +12,6 @@ function signInReducer(state = initalState, action) {
   switch (action.type) {
     case Constants.SIGN_IN_USER:
       let errorMessage = '';
-      console.log('signing in');
       firebaseApp.auth().signInWithEmailAndPassword(action.email, action.password)
       .catch(error => {
         errorMessage = error

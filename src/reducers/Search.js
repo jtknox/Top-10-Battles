@@ -8,16 +8,12 @@ const initalState = {
 
 // REDCUER
 function searchReducer(state = initalState, action) {
-  console.log(action);
   switch (action.type) {
     case Constants.LOAD_MOVIES_PENDING:
-      console.log('here');
       return { ...state, loading: true };
     case Constants.LOAD_MOVIES_FULFILLED:
-      console.log('here');
       return { ...state, queriedMovies: action.payload.data.results, loading: false };
     case Constants.LOAD_MOVIES_REJECTED:
-      console.log('here');
       return { ...state, loading: false, error: `${action.payload.message}` };
 
     default:

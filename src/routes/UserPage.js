@@ -20,7 +20,6 @@ class UserPage extends Component {
         movies.push({ overview, posterURL, title, releaseDate, serverKey });
       })
       this.setState({movies: movies})
-      console.log(movies);
     })
   	}
 

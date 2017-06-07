@@ -25,13 +25,12 @@ class Search extends Component {
 	}
 
 	addMovie(title, posterURL, overview, releaseDate) {
-		console.log('here');
 		top10MovieRef.push({title, posterURL, overview, releaseDate});
 	}
 
 	render() {
-		const { queriedMovies } = this.props.properties;
-		console.log(queriedMovies);
+		console.log(this.props);
+		const { queriedMovies } = this.props.properties.search;
 		var MovieList;
 		queriedMovies ? MovieList = queriedMovies.map(movie => <MovieItem title={movie.title} overview={movie.overview} poster={movie.poster_path} releaseDate={movie.release_date} addMovie={this.addMovie}/>) : MovieList=<div></div>;
 		return (

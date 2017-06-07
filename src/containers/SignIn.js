@@ -5,7 +5,7 @@ import * as Actions from '../actions/Authentication.js'
 
 const mapStateToProps = (state) => {
 	return {
-		properties: state.authentication
+		properties: state
 	};
 }
 
