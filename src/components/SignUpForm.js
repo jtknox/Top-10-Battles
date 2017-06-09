@@ -12,6 +12,13 @@ class SignUpForm extends Component {
     }
   }
 
+  _handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      console.log('enter');
+      this.signUp();
+    }
+  }
+
   signUp() {
     const { updateUserAuthInfo } = this.props;
     const { email, password } = this.state;
@@ -36,7 +43,9 @@ class SignUpForm extends Component {
               className="form-control" 
               id="exampleInputEmail1" 
               placeholder="Email"
-              onChange={event => this.setState({ email: event.target.value})}/>
+              onChange={event => this.setState({ email: event.target.value})}
+              onKeyPress={(e) => this._handleKeyPress(e)}
+              />
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
@@ -46,6 +55,7 @@ class SignUpForm extends Component {
               id="exampleInputPassword1" 
               placeholder="Password"
               onChange={event => this.setState({ password: event.target.value })}
+              onKeyPress={(e) => this._handleKeyPress(e)}
             />
           </div>
           <button

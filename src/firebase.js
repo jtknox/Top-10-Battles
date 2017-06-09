@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 import { updateUserID, logout } from './actions/Authentication.js';
+import { createTop10MovieRef } from './actions/Firebase.js';
 import store from './store.js';
 
 var config = {
@@ -12,12 +13,13 @@ var config = {
 };
 
 export const firebaseApp = firebase.initializeApp(config);
-export const top10MovieRef = firebase.database().ref('top10Movies');
 
 firebase.auth().onAuthStateChanged((user) => {
 	if(user) {
 		console.log('signing in');
   		store.dispatch(updateUserID(user.uid));
+      store.dispatch(createTop10MovieRef(user.uid));
+  		console.log(store.getState().authentication.userID);
 	}
 	else {
 		console.log('singing out');

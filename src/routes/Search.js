@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import MovieItem from '../components/MovieItem.js';
 import { TMDB_BASE_URL } from '../constants.js';
 import { Link } from 'react-router';
-import { firebaseApp, top10MovieRef } from '../firebase.js';
+import { firebaseApp } from '../firebase.js';
 
 class Search extends Component {
 	constructor(props) {
 		super(props);
+		this.addMovie = this.addMovie.bind(this);
 		this.state={
 			query: ''
 		}
 	}
+
+	_handleKeyPress = (e) => {
+    	if (e.key === 'Enter') {
+      		console.log('enter');
+      		this.loadMovie();
+    	}
+  	}	
 
 	signOut() {
     	firebaseApp.auth().signOut();
@@ -25,6 +33,8 @@ class Search extends Component {
 	}
 
 	addMovie(title, posterURL, overview, releaseDate) {
+		console.log(this.props);
+		const { top10MovieRef } = this.props.properties.firebase;
 		top10MovieRef.push({title, posterURL, overview, releaseDate});
 	}
 
@@ -42,7 +52,8 @@ class Search extends Component {
 				type="text" 
 				placeholder="Enter Movie Here..."
 				//updateQueryInput
-				onChange={event => this.setState({ query: event.target.value })} 
+				onChange={event => this.setState({ query: event.target.value })}
+				onKeyPress={(e) => this._handleKeyPress(e)}
 			/>
 			<button className="btn" onClick={() => this.loadMovie()}>Search</button>
 			{MovieList}

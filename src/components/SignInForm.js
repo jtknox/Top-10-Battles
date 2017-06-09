@@ -12,6 +12,13 @@ class SignInForm extends Component {
     }
   }
 
+  _handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      console.log('enter');
+      this.signIn();
+    }
+  }
+
   signIn() {
     const { updateUserAuthInfo } = this.props;
     const { email, password } = this.state;
@@ -37,6 +44,7 @@ class SignInForm extends Component {
               id="exampleInputEmail1" 
               placeholder="Email" 
               onChange={event => this.setState({ email: event.target.value })}
+              onKeyPress={(e) => this._handleKeyPress(e)}
             />
           </div>
           <div className="form-group">
@@ -47,12 +55,14 @@ class SignInForm extends Component {
               id="exampleInputPassword1" 
               placeholder="Password" 
               onChange={event => this.setState({ password: event.target.value })}
+              onKeyPress={(e) => this._handleKeyPress(e)}
             />
           </div>
           <button
              className="btn btn-primary"
              type="button"
              onClick={() => this.signIn()}
+             onKeyPress={(e) => this._handleKeyPress(e)}
            >
             Sign In
            </button>

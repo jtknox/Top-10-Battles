@@ -5,7 +5,7 @@ import * as Actions from '../actions/UserPage.js'
 
 const mapStateToProps = (state) => {
 	return {
-		properties: state.userPage
+		properties: state
 	};
 }
 
