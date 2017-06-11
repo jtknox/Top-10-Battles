@@ -1,22 +1,29 @@
 import * as Constants from '../constants.js'
+import axios from 'axios'
 
-export const initialAddMoviesFromDB = (movies) => {
+export const loadMoviesFromAPI = (url) => {
     return {
-        type: Constants.ADD_MOVIES_FROM_DB,
-        movies
+        type: Constants.LOAD_MOVIES_API,
+        payload: axios.get(url)
     };
 }
 
-export const addMovie = (movieObj) => {
+export const loadMoviesFromDB = () => {
     return {
-        type: Constants.ADD_MOVIE,
+        type: Constants.LOAD_MOVIES_FROM_DB,
+    };
+}
+
+export const addTop10Movie = (movieObj) => {
+    return {
+        type: Constants.ADD_TOP10_MOVIE,
         movieObj
     };
 }
 
-export const deleteMovie = (title) => {
+export const deleteTop10Movie = (title) => {
     return {
-        type: Constants.DELETE_MOVIE,
+        type: Constants.DELETE_TOP10_MOVIE,
         title
     };
 }

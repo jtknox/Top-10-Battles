@@ -27,20 +27,27 @@ class Search extends Component {
   	}
 
 	loadMovie() {
-		const { loadMovies } = this.props.actions;
+		const { loadMoviesFromAPI } = this.props.actions;
 		const url = `${TMDB_BASE_URL}${this.state.query}`;
-		loadMovies(url);
+		loadMoviesFromAPI(url);
 	}
 
 	addMovie(title, posterURL, overview, releaseDate) {
 		console.log(this.props);
 		const { top10MovieRef } = this.props.properties.firebase;
+		const { addTop10Movie } = this.props.actions;
+		addTop10Movie({
+			title: title,
+			posterURL: posterURL,
+			overview: overview,
+			releaseDate: releaseDate
+		})
 		top10MovieRef.push({title, posterURL, overview, releaseDate});
 	}
 
 	render() {
 		console.log(this.props);
-		const { queriedMovies } = this.props.properties.search;
+		const { queriedMovies } = this.props.properties.movies;
 		var MovieList;
 		queriedMovies ? MovieList = queriedMovies.map(movie => <MovieItem title={movie.title} overview={movie.overview} poster={movie.poster_path} releaseDate={movie.release_date} addMovie={this.addMovie}/>) : MovieList=<div></div>;
 		return (

@@ -13,6 +13,7 @@ class UserPage extends Component {
 	}
 
 	componentDidMount() {
+	console.log(this.props);
 	const { top10MovieRef } = this.props.properties.firebase;
     top10MovieRef.on('value', snap => {
       let movies = [];

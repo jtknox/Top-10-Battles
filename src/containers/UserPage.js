@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import UserPage from '../routes/UserPage.js';
-import * as Actions from '../actions/UserPage.js'
+import * as Actions from '../actions/User.js'
 
 const mapStateToProps = (state) => {
 	return {

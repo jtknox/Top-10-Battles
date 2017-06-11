@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SignUp from '../routes/SignUp.js';
-import * as Actions from '../actions/Authentication.js'
+import * as Actions from '../actions/User.js'
 
 const mapStateToProps = (state) => {
 	return {

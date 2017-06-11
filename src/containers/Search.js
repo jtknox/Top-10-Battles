@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Search from '../routes/Search.js';
-import * as Actions from '../actions/Search.js'
+import * as Actions from '../actions/Movies.js'
 
 const mapStateToProps = (state) => {
 	return {
